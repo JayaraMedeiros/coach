@@ -1,8 +1,7 @@
 <!doctype html>
-<html ng-app>
+<html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    
+     
     <meta name="layout" content="main"/>
     <title>Welcome to Grails</title>
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />

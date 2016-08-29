@@ -14,7 +14,7 @@ dataSource:
     password: 123456
 
 environments:
-    development:
+    development: 
         dataSource:
             dbCreate: update
             url: jdbc:postgresql://localhost/coach

@@ -31,6 +31,12 @@ class ClienteController {
         cliente.dataDeNascimento = sdf.parse(params.dataDeNascimento)
         println cliente.dataDeNascimento
         cliente.email = params.email
+        cliente.apelido = params.apelido
+        cliente.profissao = params.profissao
+        cliente.endereco = params.endereco
+        cliente.contato1 = params.contato1
+        cliente.contato2 = params.contato2
+        cliente.contatoparente = params.contatoparente
         cliente.save()
 
         if(cliente.hasErrors()){
