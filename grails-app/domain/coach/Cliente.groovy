@@ -7,7 +7,7 @@ class Cliente {
 	int idade
 	Date dataDeNascimento
 
-	static hasMany = [avaliacoesPerimetricas:AvaliacaoPerimetrica]
+	//static hasMany = [avaliacoesPerimetricas:AvaliacaoPerimetrica]
 	
     static constraints = {
     	
