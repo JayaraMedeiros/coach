@@ -1,8 +1,8 @@
 package coach
 
-class Escolha {
+class Alternativa {
 
-	String descricaoEscolha
+	String descricaoAlternativa
 	
     static constraints = {
     }
