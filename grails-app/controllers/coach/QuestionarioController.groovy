@@ -2,6 +2,7 @@ package coach
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import coach.Pergunta
 
 @Transactional(readOnly = true)
 class QuestionarioController {
@@ -19,6 +20,10 @@ class QuestionarioController {
 
     def create() {
         respond new Questionario(params)
+    }
+
+    def chamaPergunta(){
+        respond new Pergunta(params)
     }
 
     @Transactional

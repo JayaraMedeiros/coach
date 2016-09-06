@@ -16,7 +16,7 @@ dataSource:
 environments:
     development: 
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:postgresql://localhost/coach
     test:
         dataSource:
