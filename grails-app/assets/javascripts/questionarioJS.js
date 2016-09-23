@@ -1,8 +1,10 @@
 $(function(){
+	
+	function cadastraPergunta(){//função que insere os elementos para o cadastro de perguntas
+		
+		console.log("oi titia jay");//para saber se a função está sendo chamada
 
-	function cadastraPergunta(){
-		console.log("oi titia jay");
-		var $novaPergunta = $("<div/>")
+		var $novaPergunta = $('<div id="div-corpo"/>')
 			.css("display","none")
             .addClass("jumbotron")
             .append($('<h4 />')
@@ -17,46 +19,53 @@ $(function(){
             			.text("Tipo da pergunta: "))
             .append($('<div/> ')
             			.addClass("radio")
-            			.attr("id", "div-radios")
             			.append($('<input type="radio" id="radioSubjetiva" name="tipoPergunta"> Subjetiva<br>'))
             			.append($('<input type="radio" id="radioUnicaEscolha" name="tipoPergunta"> Única Escolha<br>'))
 						.append($('<input type="radio" id="radioMultiplaEscolha" name="tipoPergunta"> Múltipla Esscolha<br>')))
-            			.append($('<br><button type="button" id="btn-alternativa" class="btn btn-primary" disabled>Cadastrar Alternativa</button>'));
+            			.append($('<br><button type="button" id="colocar-alternativa" class="btn btn-primary" disabled>Cadastrar Alternativa</button>'));
 
-    	$novaPergunta.appendTo("#div-perguntas").show();
+    	$novaPergunta.appendTo("#div-perguntas").show(); //exibe o novo elemento(pergunta) no html
+
+
+		$("#colocar-alternativa").click(cadastraAlternativa); //chama a função de cadastro de alternativas
 
 		$("input[id=radioSubjetiva]").click(function(){
-    		$("#btn-alternativa").prop("disabled",true);
+    		$("#colocar-alternativa").prop("disabled",true);
     	});
 
     	$("input[id=radioUnicaEscolha]").click(function(){
-    		$("#btn-alternativa").prop("disabled",false);
+    		$("#colocar-alternativa").prop("disabled",false);
     	});
 
     	$("input[id=radioMultiplaEscolha]").click(function(){
-    		$("#btn-alternativa").prop("disabled",false);
-    	});
-
-    	$("#btn-alternativa").click(cadastraAlternativa);
-    	
+    		$("#colocar-alternativa").prop("disabled",false);
+    	});    	
     }
-
+      
+    //função que insere uma nova alternativa no html
     function cadastraAlternativa(){ 	 			
     	console.log("opaaa");
-    	
-    	var $novaAlternativa = $("<div/>")
-    		.append($('<br><div class="form-group"><label>Descrição da Alternativa:</label><input id="descricaoAlternativa" type="text" class="form-control"><span class="glyphicon glyphicon-remove" id="remove"></span></div>'));
-
-    	$novaAlternativa.appendTo("#div-radios").show();
-
-    	$("remove").click(removeAlternativa);
+    	var $novaAlternativa =($('<br><div class="form-group" id="div-alternativa"/>'))
+    	// $('<div id="div-alternativa" />')
+    								.append($('<h4 />')
+    											.text("Descrição da Alternativa: "))
+    								.append($('<input id="descricaoAlternativa" type="text" class="form-control">'))
+    								.append($('<button type="button" id="btn-removeAlternativa" class="btn btn-default">Remover</button>'));
+     	$novaAlternativa.appendTo("#div-corpo").show();
+     	 
+     	$("#btn-removeAlternativa").live('click', function () {
+     		console.log("DHIAUHIAHE");
+     	});
     }
-
+   	
+  
     function removeAlternativa(){
-    	$novaAlternativa.delete();
-    }
-
+   		console.log("Sai daqui");
+   	}
+ 
+ 	//chama a função para cadastrar pergunta, após o botão cadastrar pergunta ser cliclado
 	$("#colocar-pergunta").click(cadastraPergunta);
+   	
 	
 });
 
