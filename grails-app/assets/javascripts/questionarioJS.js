@@ -41,7 +41,9 @@ $(function(){
     		$("#colocar-alternativa").prop("disabled",false);
     	});    	
     }
-      
+       function removeAlternativa (){
+   			console.log("Sai daqui");
+   		}
     //função que insere uma nova alternativa no html
     function cadastraAlternativa(){ 	 			
     	console.log("opaaa");
@@ -50,23 +52,20 @@ $(function(){
     								.append($('<h4 />')
     											.text("Descrição da Alternativa: "))
     								.append($('<input id="descricaoAlternativa" type="text" class="form-control">'))
-    								.append($('<button type="button" id="btn-removeAlternativa" class="btn btn-default">Remover</button>'));
+    								.append($('<button type="button" id="btn-removeAlternativa" onclick="removeAlternativa()" class="btn btn-default">Remover</button>'));
+
      	$novaAlternativa.appendTo("#div-corpo").show();
      	 
-     	$("#btn-removeAlternativa").live('click', function () {
-     		console.log("DHIAUHIAHE");
-     	});
-    }
+     	$("#btn-removeAlternativa").click(removeAlternativa);
    	
-  
-    function removeAlternativa(){
-   		console.log("Sai daqui");
-   	}
+   		}
  
  	//chama a função para cadastrar pergunta, após o botão cadastrar pergunta ser cliclado
 	$("#colocar-pergunta").click(cadastraPergunta);
-   	
 	
 });
 
+function removeAlternativa (){
+	console.log("Sai daqui");
+}
 
