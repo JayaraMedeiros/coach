@@ -22,10 +22,7 @@ class QuestionarioController {
         respond new Questionario(params)
     }
 
-    def chamaPergunta(){
-        respond new Pergunta(params)
-    }
-
+   
     @Transactional
     def save(Questionario questionario) {
        questionario = new Questionario()

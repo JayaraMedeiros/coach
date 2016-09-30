@@ -11,20 +11,19 @@
    
     
     <body>
-
-        <div class="container">
-            <div class="jumbotron">
-                <h1 class="text-center">Questionário</h1>
-            </div>
+        <div class="container" id="div-questionario">
+            <h1 class="text-center">Questionário</h1>
 
             <div class="well">
                 <h3>Tipo do questionário:</h3>
                 <p class="bg-info">${questionario.tipo}</p>
-                <br>
-                <button id="colocar-pergunta" class="btn btn-primary">Inserir Pergunta</button>
+                
+                <button id="btn-colocar-pergunta" class="btn btn-primary">Inserir Pergunta</button>
             </div>
 
-            <div class="well" id="div-perguntas">
+            <div class="well" id="div-list-perguntas" style="display: none;"></div>
+            
+            <div class="well" id="div-perguntas" style="display: none;"></div>
 
                 
             </div>
