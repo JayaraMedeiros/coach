@@ -10,20 +10,20 @@ $(function(){
             			.text("Descrição da pergunta: "))
             .append($("<div />")
             			.addClass("form-group")
-            			.append($("<textarea />")
+            			.append($('<input type="textarea" />')
             						.addClass("form-control")
             						.attr("rows", "5")
             						.attr("name", "descricaoPergunta")))
             .append($('<h4 />')
             			.text("Tipo da pergunta: "))
-            .append($('<div/> ')
+            .append($('<div/>')
             			.addClass("radio")
             			.append($('<input type="radio" id="radioSubjetiva" name="tipoPergunta"> Subjetiva<br>'))
             			.append($('<input type="radio" id="radioUnicaEscolha" name="tipoPergunta"> Única Escolha<br>'))
-						.append($('<input type="radio" id="radioMultiplaEscolha" name="tipoPergunta"> Múltipla Esscolha<br>')))
-            			.append($('<br><button type="button" id="colocar-alternativa" class="btn btn-primary" disabled>Cadastrar Alternativa</button>'))
-            			.append($('<btn-defaultton type="button" id="btn-salva-pergunta" class="btn btn-default disabled">Salvar Pergunta</button>'));
-
+						.append($('<input type="radio" id="radioMultiplaEscolha" name="tipoPergunta"> Múltipla Escolha<br>')))
+                        .append($('<br><button type="button" id="colocar-alternativa" class="btn btn-primary" disabled>Cadastrar Alternativa</button>'))
+                        .append($('<br><br><input type="submit" class="btn btn-primary" value="Salvar Pergunta" disabled>'));
+            			
 
         $("#div-perguntas").css("display", "block"); //Torna a div da pergunta visível
 
@@ -54,15 +54,14 @@ $(function(){
     								.append($('<h4 />')
     											.text("Descrição da Alternativa: "))
     								.append($('<input id="descricaoAlternativa" type="text" class="form-control">'))
-    								.append($('<button onclick="removeAlternativa()" type="button" id="btn-removeAlternativa" class="btn btn-default">Remover</button>'))
-    								.append($('<btn-defaultton type="button" id="btn-salva-pergunta" class="btn btn-default disabled">Salvar Alternativa</button>'));
+    								.append($('<button onclick="removeAlternativa()" type="button" id="btn-removeAlternativa" class="btn btn-default">Remover</button>'));
+    								
 
      	$novaAlternativa.appendTo("#div-perguntas").show(); //insere e exibe a alternativa
     }
- 
+
  	//chama a função para cadastrar pergunta, após o botão cadastrar pergunta ser cliclado
-	$("#btn-colocar-pergunta").click(cadastraPergunta);
-	
+	$("#btn-colocar-pergunta").click(cadastraPergunta);	
 });
 
 function removeAlternativa(){ //remove todos os elementos da alternativa do HTML

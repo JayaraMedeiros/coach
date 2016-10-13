@@ -27,12 +27,13 @@ class QuestionarioController {
     def save(Questionario questionario) {
        questionario = new Questionario()
        questionario.tipo = params.tipo
+       questionario.nomeQuestionario = params.nomeQuestionario
        questionario.save()
 
         if(questionario.hasErrors()){
             render questionario.errors
         }else{
-            redirect(action:"show",params:[id:questionario.id])
+           //redirect(action:"show",params:[id:questionario.id])
         }
 
     }
