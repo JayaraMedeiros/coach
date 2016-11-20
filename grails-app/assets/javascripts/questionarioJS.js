@@ -1,79 +1,96 @@
 $(function(){
 	
-	function cadastraPergunta(){//função que insere os elementos para o cadastro de perguntas
-		
-		console.log("oi titia jay");//para saber se a função está sendo chamada
-
-		var $novaPergunta = $("#div-perguntas")
-						.addClass("jumbotron")
-						.append($('<h4 />')
-            			.text("Descrição da pergunta: "))
+	function cadastraPerguntaSub(){//função que insere os elementos para o cadastro de perguntas
+		console.log("Subjetiva");//para saber se a função está sendo chamada
+        var $novaPergunta = $("#div-perguntas")     
             .append($("<div />")
-            			.addClass("form-group")
-            			.append($('<input type="textarea" />')
-            						.addClass("form-control")
-            						.attr("rows", "5")
-            						.attr("name", "descricaoPergunta")))
-            .append($('<h4 />')
-            			.text("Tipo da pergunta: "))
-            .append($('<div/>')
-            			.addClass("radio")
-            			.append($('<input type="radio" id="radioSubjetiva" name="tipoPergunta"> Subjetiva<br>'))
-            			.append($('<input type="radio" id="radioUnicaEscolha" name="tipoPergunta"> Única Escolha<br>'))
-						.append($('<input type="radio" id="radioMultiplaEscolha" name="tipoPergunta"> Múltipla Escolha<br>')))
-                        .append($('<br><button type="button" id="colocar-alternativa" class="btn btn-primary" disabled>Cadastrar Alternativa</button>'))
-                        .append($('<br><br><input type="submit" class="btn btn-primary" value="Salvar Pergunta" disabled>'));
-            			
+                .addClass("jumbotron")
+                .addClass("form-group")
+                .append($('<h5/>')
+                    .text("Pergunta: "))
+                .append($('<input />')
+                    .attr("type","textarea")
+                    .addClass("form-control")
+                    .attr("rows", "5")
+                    .attr("name", "descricaoPergunta")
+                    .attr("placeholder","Escreva a pergunta aqui")));
+        $novaPergunta.appendTo("#div-perguntas").show(); 
+    }
 
+    function cadastraPerguntaUnic(){
+        console.log("UnicaEscolha");
+        var $novaPergunta = $("#div-perguntas")     
+            .append($("<div />")
+                .addClass("jumbotron")
+                .addClass("form-group")
+                .append($('<h5/>')
+                    .text("Pergunta: "))
+                .append($('<input />')
+                    .attr("type","textarea")
+                    .addClass("form-control")
+                    .attr("rows", "5")
+                    .attr("name", "descricaoPergunta")
+                    .attr("placeholder","Escreva a pergunta aqui"))
+                .append($('<h5 />')
+                    .text("Alternativas: "))
+                .append($('<input />')
+                    .attr("id","descricaoAlternativa")
+                    .attr("placeholder","escreva a alternativa aqui")
+                    .attr("type","text")
+                    .addClass("form-control"))
+                .append($('<span />')
+                    .addClass("glyphicon glyphicon-remove")
+                    .attr("aria-hidden","true")));                            
         $("#div-perguntas").css("display", "block"); //Torna a div da pergunta visível
+        $novaPergunta.appendTo("#div-perguntas").show(); //exibe o novo elemento(pergunta) no html
+    }
 
-    	$novaPergunta.appendTo("#div-perguntas").show(); //exibe o novo elemento(pergunta) no html
-
-		$("#colocar-alternativa").click(cadastraAlternativa); //chama a função de cadastro de alternativas
-		$("#btn-salva-pergunta").click(mostraTabelaPergunta); // chama a função mostraTabelaPergunta quando o botão salvar pergunta for clicado
-
-		$("input[id=radioSubjetiva]").click(function(){
-    		$("#colocar-alternativa").prop("disabled",true);
-    	});
-
-    	$("input[id=radioUnicaEscolha]").click(function(){
-    		$("#colocar-alternativa").prop("disabled",false);
-    	});
-
-    	$("input[id=radioMultiplaEscolha]").click(function(){
-    		$("#colocar-alternativa").prop("disabled",false);
-    	});    	  	
-
+    function cadastraPerguntaMult(){
+        console.log("Cadastro de pergunta MultiplaEscolha");
+         var $novaPergunta = $("#div-perguntas")     
+            .append($("<div />")
+                .addClass("jumbotron")
+                .addClass("form-group")
+                .append($('<h5/>')
+                    .text("Pergunta: "))
+                .append($('<input />')
+                    .attr("type","textarea")
+                    .addClass("form-control")
+                    .attr("rows", "5")
+                    .attr("name", "descricaoPergunta")
+                    .attr("placeholder","Escreva a pergunta aqui"))
+                .append($('<h5 />')
+                    .text("Alternativas: "))
+                .append($('<input />')
+                    .attr("id","descricaoAlternativa")
+                    .attr("placeholder","escreva a alternativa aqui")
+                    .attr("type","text")
+                    .addClass("form-control"))
+                .append($('<span />')
+                    .addClass("glyphicon glyphicon-remove")
+                    .attr("aria-hidden","true")));                            
+        $("#div-perguntas").css("display", "block"); //Torna a div da pergunta visível
+        $novaPergunta.appendTo("#div-perguntas").show();
     }
       
     //função que insere uma nova alternativa no html
     function cadastraAlternativa(){ 	 			
-    	console.log("opaaa");
-    	var $novaAlternativa =($('<br><div class="form-group" id="div-alternativa"/>'))
-    	// $('<div id="div-alternativa" />')
-    								.append($('<h4 />')
-    											.text("Descrição da Alternativa: "))
-    								.append($('<input id="descricaoAlternativa" type="text" class="form-control">'))
-    								.append($('<button onclick="removeAlternativa()" type="button" id="btn-removeAlternativa" class="btn btn-default">Remover</button>'));
-    								
-
-     	$novaAlternativa.appendTo("#div-perguntas").show(); //insere e exibe a alternativa
+    	console.log("Cadastro Alternativa");
+    	var $novaAlternativa =($('<br><div />')
+            .addClass("form-group")
+            .attr("id","div-alternativa"))
+       	$novaAlternativa.appendTo("#div-perguntas").show(); //insere e exibe a alternativa
     }
 
  	//chama a função para cadastrar pergunta, após o botão cadastrar pergunta ser cliclado
-	$("#btn-colocar-pergunta").click(cadastraPergunta);	
+	//$("#btn-colocar-pergunta").click(cadastraPergunta);
+    $("#btnPerguntaSub").click(cadastraPerguntaSub);
+    $("#btnPerguntaUnic").click(cadastraPerguntaUnic);
+    $("#btnPerguntaMult").click(cadastraPerguntaMult);
+
 });
 
 function removeAlternativa(){ //remove todos os elementos da alternativa do HTML
-	console.log("Sai daqui");
+	console.log("remove alternativa");
 	$("#div-alternativa").remove();
 }
-
-function salvaPergunta(){	//Salva a pergunta e relacionaa com o questionário
-	console.log("salvando pergunta");
-}
-
-function mostraTabelaPergunta(){
-	console.log("mostrando tabela de perguntas");
-}
-

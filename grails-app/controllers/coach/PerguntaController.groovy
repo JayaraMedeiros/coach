@@ -23,27 +23,10 @@ class PerguntaController {
 
     @Transactional
     def save(Pergunta pergunta) {
-        if (pergunta == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
+        pergunta = new Pergunta()
+        pergunta.tipoPergunta = params.tipoPergunta
+        pergunta.descricaoPergunta = params.descricaoPergunta
 
-        if (pergunta.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond pergunta.errors, view:'create'
-            return
-        }
-
-        pergunta.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'pergunta.label', default: 'Pergunta'), pergunta.id])
-                redirect pergunta
-            }
-            '*' { respond pergunta, [status: CREATED] }
-        }
     }
 
     def edit(Pergunta pergunta) {

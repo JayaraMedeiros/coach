@@ -2,7 +2,8 @@ package coach
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import coach.Pergunta
+
+
 
 @Transactional(readOnly = true)
 class QuestionarioController {
@@ -22,12 +23,26 @@ class QuestionarioController {
         respond new Questionario(params)
     }
 
+    def salvaAlternativa(Alternativa alternativa){
+        alternativa = new Alternativa()
+        alternativa.descricaoAlternativa = params.descricaoAlternativa
+        alternativa.save()
+    }
+
+    def salvaPergunta(Pergunta pergunta){
+        pergunta = New Pergunta()
+        pergunta.tipoPergunta = params.tipoPergunta
+        pergunta.descricaoPergunta = params.descricaoPergunta
+    }
+
    
     @Transactional
     def save(Questionario questionario) {
+    render params
        questionario = new Questionario()
        questionario.tipo = params.tipo
        questionario.nomeQuestionario = params.nomeQuestionario
+       questionario.perguntas = params.perguntas
        questionario.save()
 
         if(questionario.hasErrors()){

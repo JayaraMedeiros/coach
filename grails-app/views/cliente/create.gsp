@@ -38,15 +38,11 @@
                         <input type="number" class="form-control" name="idade">
                         <label for="usr">Email:</label>
                         <input type="email" class="form-control" name="email">
-
-
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Submit">
-                </div>  
 
-                
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                </div>         
             </div>
-
         </form>
     </body>
 </html>

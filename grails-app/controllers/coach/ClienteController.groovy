@@ -1,5 +1,4 @@
 package coach
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import java.text.SimpleDateFormat
@@ -11,15 +10,17 @@ class ClienteController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Cliente.list(params), model:[clienteCount: Cliente.count()]
+        respond Cliente.list(params),
+        model:[clienteCount: Cliente.count()]
     }
-
     def show() {
         respond Cliente.get(params.id) 
     }
-
     def create() {
-        respond new Cliente(nome:"jay")
+        respond new Cliente()
+    }
+    def edit(){
+        respond Cliente.get(params.id)
     }
 
     @Transactional
@@ -46,33 +47,9 @@ class ClienteController {
         }
     }
 
-    def edit(Cliente cliente) {
-        respond cliente
-    }
-
     @Transactional
     def update(Cliente cliente) {
-        if (cliente == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        if (cliente.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond cliente.errors, view:'edit'
-            return
-        }
-
-        cliente.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'cliente.label', default: 'Cliente'), cliente.id])
-                redirect cliente
-            }
-            '*'{ respond cliente, [status: OK] }
-        }
+        render params
     }
 
     @Transactional

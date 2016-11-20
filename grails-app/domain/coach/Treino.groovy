@@ -3,7 +3,8 @@ package coach
 class Treino {
 
 	String nomeTreino, classeTreino
-	Date dataInicio, dataTermino
+	Date dataInicio
+	Date dataTermino
 	static hasMany = [exercicios:Exercicio]
 
     static constraints = {
