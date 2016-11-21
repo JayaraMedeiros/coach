@@ -20,6 +20,7 @@
     </div>       
 
     <div class="grid80">
+    
       <div id="list-cliente" class="content scaffold-list page-header" role="main">
           <h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${cliente.nome}</h1>
           
@@ -131,7 +132,7 @@
         }
         document.getElementById(clienteName).style.display = "block";
         evt.currentTarget.className += " w3-red";
-    }
+      }
     </script>
     </body>
 </html>

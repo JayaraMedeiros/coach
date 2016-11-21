@@ -127,7 +127,7 @@ th.asc a, th.desc a{ /*tabelas de listagem das index*/
 	float: none;
 }
 
-.nav a, .nav a:active, .nav a:visited{
+.nav a, .nav a:active, .nav a:visited, .nav li input, .nav li input:active, .nav li input:visited{
 	padding: 0.8em 1em;
 	background-color: rgb(50,50,50);
 	color: white;
@@ -136,7 +136,8 @@ th.asc a, th.desc a{ /*tabelas de listagem das index*/
 	transition: linear 0.3s;
 }
 
-.nav a:hover, .nav a:focus, .nav a.create, .nav a.create:active, .nav a.create:visited{
+.nav a:hover, .nav a:focus, .nav a.create, .nav a.create:active, .nav a.create:visited,
+.nav li input{
 	color: rgb(50,50,50);
 	background-color: rgb(238, 210, 17);
 	text-shadow: 0 0 0;
@@ -185,15 +186,19 @@ ul.nav-pills li{
 	background-color: rgb(238, 210, 17);
 }
 
-.scaffold-list h1, .scaffold-list .nav{
+.scaffold-list h1, .scaffold-list .nav, .scaffold-show h1, .scaffold-show .nav{
 	display: inline-block;
 }
 
-.scaffold-list{
+.scaffold-list, .scaffold-show{
 	margin: 5em 0 1em 0;
 }
 
-.scaffold-list .nav{
+.scaffold-list .nav, .scaffold-show .nav{
 	float: right;
+}
+
+.content h1{ /*página show de exercício*/
+	border: 0;
 }
 
