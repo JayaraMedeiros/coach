@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 @Transactional(readOnly = true)
 class ClienteController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "GET", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,13 +24,12 @@ class ClienteController {
     }
 
     @Transactional
-    def save(Cliente cliente) {
+    def save(Cliente cliente){
         cliente = new Cliente()
         cliente.nome =  params.nome
         cliente.idade = Integer.parseInt(params.idade)
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-MM")
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy")
         cliente.dataDeNascimento = sdf.parse(params.dataDeNascimento)
-        println cliente.dataDeNascimento
         cliente.email = params.email
         cliente.apelido = params.apelido
         cliente.profissao = params.profissao
@@ -49,7 +48,26 @@ class ClienteController {
 
     @Transactional
     def update(Cliente cliente) {
-        render params
+        //render params
+        cliente = Cliente.get(params.id)
+        cliente.nome =  params.nome
+        cliente.idade = Integer.parseInt(params.idade)
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy")
+        cliente.dataDeNascimento = sdf.parse(params.dataDeNascimento)
+        cliente.email = params.email
+        cliente.apelido = params.apelido
+        cliente.profissao = params.profissao
+        cliente.endereco = params.endereco
+        cliente.contato1 = params.contato1
+        cliente.contato2 = params.contato2
+        cliente.contatoparente = params.contatoparente
+        cliente.save()
+
+        if(cliente.hasErrors()){
+            render cliente.errors
+        }else{
+            redirect(action:"show",params:[id:cliente.id])
+        }
     }
 
     @Transactional

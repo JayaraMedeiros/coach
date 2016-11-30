@@ -12,4 +12,9 @@ class Pergunta {
     	alternativas nullable:true
     	respostas nullable:true
     }
+
+    Pergunta(tipoPergunta, descricaoPergunta){
+    	this.tipoPergunta = tipoPergunta
+    	this.descricaoPergunta = descricaoPergunta
+    }
 }

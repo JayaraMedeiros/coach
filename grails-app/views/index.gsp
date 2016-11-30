@@ -9,10 +9,11 @@
 </head>
 <body>
     <div id="tudo">
-    <div class="logo-escopo" role="presentation">
-        <asset:image src="logobranco.png" class="logo"/>
-    </div>
-    <div id="content" role="main">
+        <div class="logo-escopo" role="presentation">
+            <asset:image src="logobranco.png" class="logo"/>
+        </div>
+        
+        <div id="content" role="main">
         <section class="row colset-2-its">
             <div id="controllers" role="navigation">
                 <ul>

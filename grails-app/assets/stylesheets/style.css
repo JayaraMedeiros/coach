@@ -11,6 +11,12 @@ body{
 	background-color: rgb(50, 50, 50);
 }
 
+.grid50{
+	width: 50%;
+	margin: 0 1em;
+	box-sizing: border-box;
+}
+
 .grid80{ 
 	width: 80%;
 	margin: 0 auto;
@@ -18,15 +24,26 @@ body{
 }
 
 .grid20{
-	width: 18%;
+	width: 19%;
 	margin: 0 auto;
 	padding-right: 1em;
 	box-sizing: border-box;
 }
 
-.grid80 .grid80, .grid80 .grid20{
+.grid80 .grid80, .grid80 .grid20, .grid80 .grid50,.grid80 .grid80 .grid20, .grid80 .grid80 .grid40{
 	display: inline-block;
 	vertical-align: top;
+}
+
+.grid80 .grid80 .grid80{
+	vertical-align: bottom;
+	margin: 0 auto;
+}
+
+.grid40{
+	width: 40%;
+	margin: 0 1em;
+	box-sizing: border-box;
 }
 
 #content{ /* página home, fundo dos ícones*/
@@ -43,7 +60,7 @@ body{
 	background-color: rgb(50, 50, 50);
 }
 
-#nav{
+#nav, .pergunta{
 	width: 80%;
 	margin: 0 auto;
 	padding: 1em 0;
@@ -54,7 +71,7 @@ body{
 	margin: 0 auto;
 }
 
-.logo-p-escopo{ /*logo ga header*/
+.logo-p-escopo{ /*logo da header*/
 	width: 200px;
 }
 
@@ -137,7 +154,8 @@ th.asc a, th.desc a{ /*tabelas de listagem das index*/
 }
 
 .nav a:hover, .nav a:focus, .nav a.create, .nav a.create:active, .nav a.create:visited,
-.nav li input{
+.nav li input:hover, .nav li input:focus, .nav li input.btn-primary, .nav li input.btn-primary:active,
+.nav li input.btn-primary:visited{
 	color: rgb(50,50,50);
 	background-color: rgb(238, 210, 17);
 	text-shadow: 0 0 0;
@@ -145,12 +163,12 @@ th.asc a, th.desc a{ /*tabelas de listagem das index*/
 	transition: linear 0.3s;
 }
 
-.nav a.create:hover, .nav a.create:focus{
+.nav a.create:hover, .nav a.create:focus, .nav li input.btn-primary:hover, .nav li input.btn-primary:focus{
 	background-color: rgb(188, 165, 10);
 	color: white;
 }
 
-.nav a.home, .nav a.create{
+.nav a.home, .nav a.create, .nav, .nav li input.btn-primary{
 	background-image: none;
 	text-indent: 0;
 }
@@ -202,3 +220,29 @@ ul.nav-pills li{
 	border: 0;
 }
 
+#div-imc, #membro-superior, #pre-membro, #div-corpo, #div-coxa{
+	display: inline-block;
+}
+
+.pre-questionario{
+	margin-bottom: 3em;
+	text-align: center;
+}
+
+.questao{
+	border: solid;
+}
+
+.questao{
+	border-radius: 5px;
+	border-left: 6px solid yellow;
+	margin-bottom: 2em;
+}
+
+.btn-default{
+	background-color: rgb(200,200,200);
+}
+
+.alternativas{
+	display: none;
+}

@@ -26,7 +26,13 @@ class PerguntaController {
         pergunta = new Pergunta()
         pergunta.tipoPergunta = params.tipoPergunta
         pergunta.descricaoPergunta = params.descricaoPergunta
+        pergunta.save()
 
+         if(pergunta.hasErrors()){
+            render pergunta.errors
+        }else{
+            redirect(action:"show",params:[id:cliente.id])
+        }
     }
 
     def edit(Pergunta pergunta) {

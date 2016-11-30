@@ -1,9 +1,6 @@
 package coach
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
-
 
 @Transactional(readOnly = true)
 class QuestionarioController {
@@ -19,38 +16,31 @@ class QuestionarioController {
         respond questionario
     }
 
+    def criar(Questionario questionario){
+        respond new Questionario(params)
+    }
+
     def create() {
         respond new Questionario(params)
     }
 
-    def salvaAlternativa(Alternativa alternativa){
-        alternativa = new Alternativa()
-        alternativa.descricaoAlternativa = params.descricaoAlternativa
-        alternativa.save()
-    }
-
     def salvaPergunta(Pergunta pergunta){
-        pergunta = New Pergunta()
-        pergunta.tipoPergunta = params.tipoPergunta
-        pergunta.descricaoPergunta = params.descricaoPergunta
+        pergunta = new Pergunta(params.tipoPergunta,params.descricaoPergunta)
+        pergunta.save()
     }
 
-   
     @Transactional
-    def save(Questionario questionario) {
-    render params
-       questionario = new Questionario()
-       questionario.tipo = params.tipo
-       questionario.nomeQuestionario = params.nomeQuestionario
-       questionario.perguntas = params.perguntas
-       questionario.save()
+    def save(Questionario questionario){
+        render params
 
-        if(questionario.hasErrors()){
-            render questionario.errors
-        }else{
-           //redirect(action:"show",params:[id:questionario.id])
-        }
+        /*for(p in perguntas) {
+           salvaPergunta() 
+        }*/
 
+        //Exemplo ----- questionario = new Questionario()
+        //questionario.addToperguntas(new Pergunta(p))
+
+        
     }
 
     def edit(Questionario questionario) {
